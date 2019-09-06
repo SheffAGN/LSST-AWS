@@ -1,8 +1,8 @@
+## So you want to run the LSST stack on an AWS cluster?
 
+Cloud computing services like Amazon Web Services (AWS) and Google Cloud provide access to almost unlimited computing resources without the need to invest in large amounts of hardware. Using services like AWS's ParallelCluster, multiple cloud-computing nodes can be linked together to behave as a traditional High Performance Computing (HPC) cluster that use multi-processor standards that are familiar to many researchers (e.g., OpenMPI, NFS, Slurm, etc.).
 
-You can use the [editor on GitHub](https://github.com/SheffAGN/LSSTwAWS/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+With many aspects of the LSST stack already optimised for multi-processor systems, and having been inspired by a presentation by Hsin-Fang Chiang and Nate Lust at the 2019 LSST Project and Community Workshop, I thought I'd have a go at setting up an AWS cluster and running the LSST stack on it. While eventually successful, the process wasn't entirely straightforward, so I decided to document what I did for future reference and to assist others who also may want to run the LSST stack on an AWS HPC cluster.
 
 ### Markdown
 
