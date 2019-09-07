@@ -23,3 +23,4 @@ To create a new user, log into AWS as the root user then:
 9. Once the new user has been created, you'll be presented with a *Success* page. Either make a note of the new login credentials (including the *Access key ID* and *Secret access key*), or, more preferably, download the csv file. You can also choose to send an email to yourself, but this doesn't contain the access keys.
 
 
+[Next: Installing AWS CLI and pcluster](./aws-cli.md)
