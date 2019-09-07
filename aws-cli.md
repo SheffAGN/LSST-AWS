@@ -16,6 +16,6 @@ After installing the AWS CLI, you'll need to configure it so that it can, for wa
 
 Spinning up an AWS HPC Cluster requires lots of different AWS services to run synchronously, including compute instances (EC2), filesystems (EBS), and databases (DynamoDB; to store various metadata). Thankfully, the folk at AWS have written a dedicated command line task - pcluster - to do this all for you.
 
-There is dedicated online documentation for pcluster which I again refer you to for installation instructions and as a general reference; see [https://docs.aws.amazon.com/parallelcluster/]()https://docs.aws.amazon.com/parallelcluster/. Please follow the instructions for installing pcluster on your system. Later in the tutorial, we'll go through the steps needed to configure pcluster (so you don't need to do that step just yet).
+There is dedicated online documentation for pcluster which I again refer you to for installation instructions and as a general reference; see [https://docs.aws.amazon.com/parallelcluster/](https://docs.aws.amazon.com/parallelcluster/). Please follow the instructions for installing pcluster on your system. Later in the tutorial, we'll go through the steps needed to configure pcluster (so you don't need to do that step just yet).
 
 [Next: Installing the LSST stack for AWS HPC Cluster](./lsstinstall.md)
