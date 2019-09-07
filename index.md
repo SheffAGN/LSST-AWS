@@ -20,6 +20,6 @@ To create a new user, log into AWS as the root user then:
 6. The *Add Permissions* page allows you to give various priveleges to the new user. We'll cover permissions in more detail later. For now, select **Attach existing policies directly** and in the resulting table select **AdministratorAccess** then click on **Next:Tags**.
 7. On the *Add Tags* page you can add some tags, which can help to associate users and resources to certain projects. You can't really do any damage here, but unless you really want to, I wouldn't bother adding any tags. Click on **Next:Review**.
 8. Make sure everything looks ok on the *Review* page, then click on **Create User**.
-
+9. Once the new user has been created, you'll be presented with a *Success* page. Either make a note of the new login credentials (including the *Access key ID* and *Secret access key*), or, more preferably, download the csv file. You can also choose to send an email to yourself, but this doesn't contain the access keys.
 
 
