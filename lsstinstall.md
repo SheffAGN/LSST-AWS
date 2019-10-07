@@ -10,7 +10,7 @@ In this section, I'll take you through the process of selecting an appropriate b
 
 To create your own customised AMI with the LSST stack installed upon it, you'll first need to launch a compute instance with a base AMI. AWS has specific AMIs for running on their HPC clusters, so we'll need to use one of those as our base AMI. However, we don't need to run these on an AWS cluster. Instead, we can just launch a standard single AWS compute instance and use that for the installation, thereby saving on costs.
 
-First, you'll need to identify a suitable AMI as a base. A list of AWS HPC Cluster-compatible AMIs can be found on the aws-parallelcluster github page: (https://github.com/aws/aws-parallelcluster/blob/develop/amis.txt)[https://github.com/aws/aws-parallelcluster/blob/develop/amis.txt]. I suggest selecting one of the CentOS7 AMIs based in your nearest AWS region. For example, I prefer to use ami-0697036b2287f0afc, since it is the CentOS7 AMI for the eu-west-2 (London) region.
+First, you'll need to identify a suitable AMI as a base. A list of AWS HPC Cluster-compatible AMIs can be found on the aws-parallelcluster github page: [https://github.com/aws/aws-parallelcluster/blob/develop/amis.txt](https://github.com/aws/aws-parallelcluster/blob/develop/amis.txt). I suggest selecting one of the CentOS7 AMIs based in your nearest AWS region. For example, I prefer to use ami-0697036b2287f0afc, since it is the CentOS7 AMI for the eu-west-2 (London) region.
 
 Once you've selected an appropriate AMI, it's time to launch an instance:
 
