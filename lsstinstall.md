@@ -37,9 +37,9 @@ Once you've selected an appropriate AMI, it's time to launch an instance:
 11. You'll be presented with a confirmation screen, from where you can click on the blue **View Instances**, which will take you to the main instance control panel, where you can see all your running instances.
 
 *Since you've installed the aws cli, you can achieve all of the above using the following command:*
-'''
-Test
-'''
+
+    Test
+
 ### Logging into your newly-launched instance and installing the LSST stack
 
 
