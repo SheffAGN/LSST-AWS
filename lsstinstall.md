@@ -69,11 +69,13 @@ Mount the volumes and ensure that you can write to them as user `centos`:
     >> sudo chown /mnt/ps1
     >> sudo chgrp /mnt/ps1
 
-3. Update yum packages:
+3. Next, prepare your instance for the installation of the LSST stack:
+
+Update yum packages:
 
     >> sudo yum update
 
-4. And install the most recent version of git:
+And install the most recent version of git:
 
     >> sudo yum remove git*
     >> sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
