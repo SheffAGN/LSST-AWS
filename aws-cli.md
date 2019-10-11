@@ -19,3 +19,4 @@ Spinning up an AWS HPC Cluster requires lots of different AWS services to run sy
 There is dedicated online documentation for pcluster which I again refer you to for installation instructions and as a general reference; see [https://docs.aws.amazon.com/parallelcluster](https://docs.aws.amazon.com/parallelcluster). Please follow the instructions for installing pcluster on your system. Later in the tutorial, we'll go through the steps needed to configure pcluster (so you don't need to do that step just yet).
 
 [Next: Installing the LSST stack for AWS HPC Cluster](./lsstinstall.md)
+[Back: Creating an AWS account](./index.md)
