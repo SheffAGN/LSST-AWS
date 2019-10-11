@@ -87,3 +87,5 @@ With your instance now running, you now need to ssh into it so that you can inst
 
 6. With the LSST stack installed and the reference catalogue unpacked you no longer need this instance. So, to save costs, select the running instance on the instance control panel and click on **Actions > Instance State > Terminate** to kill the instance. The mounted volumes will detach, but will persist. Indeed, you should check that you can see them in the *Volumes* section of the *EC2 Dashboard*.
 
+[Next: Launching an AWS cluster](./createcluster.md)
+[Back: Installing AWS CLI and pcluster](/aws-cli.md)
