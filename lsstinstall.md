@@ -42,48 +42,48 @@ With your instance now running, you now need to ssh into it so that you can inst
 
 1. In the main panel of the instance control panel, there should now be a row showing that your instance is running (or at least setting up). Once it has stopped initializing, select it by clicking on the blue check box to the left and clicking on the **Connect** button to the right of the blue "Launch Instance" button. This will open a popup window contining instructions that your should follow to connect to your running instance.
 
-*Note: The example in the popup window will likely suggest that you connect as root@ec2-x-x-... . However, if you use the CentOS AMI, you will need to instead connect as centos@ec2-x-x-... (i.e., just replace "root" with "centos").*
+   *Note: The example in the popup window will likely suggest that you connect as root@ec2-x-x-... . However, if you use the CentOS AMI, you will need to instead connect as centos@ec2-x-x-... (i.e., just replace "root" with "centos").*
 
 2. One you have ssh'd into your instance, you'll first need to format and mount the two volumes that you created and attached to your instance at launch time. At the command line of your instance submit the following commands:
 
-First, get the name of your attached volumes (in this case `/dev/xvdf` and `/dev/xvdg`):
+   First, get the name of your attached volumes (in this case `/dev/xvdf` and `/dev/xvdg`):
     
-    >> lsblk
+       >> lsblk
 
-Next, format those volumes:
+   Next, format those volumes:
 
-    >> sudo mkfs -t xfs /dev/xvdf
-    >> sudo mkfd -t xfs /dev/xvdg
+       >> sudo mkfs -t xfs /dev/xvdf
+       >> sudo mkfd -t xfs /dev/xvdg
     
-Create mount points:
+   Create mount points:
 
-    >> sudo mkdir /mnt/lsst_stack
-    >> sudo mkdir /mnt/ps1
+       >> sudo mkdir /mnt/lsst_stack
+       >> sudo mkdir /mnt/ps1
 
-Mount the volumes and ensure that you can write to them as user `centos`:
+   Mount the volumes and ensure that you can write to them as user `centos`:
     
-    >> sudo mount /dev/xvdf /mnt/lsst_stack
-    >> sudo mount /dev/xvdf /mnt/ps1
-    >> sudo chown /mnt/lsst_stack
-    >> sudo chgrp /mnt/lsst_stack
-    >> sudo chown /mnt/ps1
-    >> sudo chgrp /mnt/ps1
+       >> sudo mount /dev/xvdf /mnt/lsst_stack
+       >> sudo mount /dev/xvdf /mnt/ps1
+       >> sudo chown /mnt/lsst_stack
+       >> sudo chgrp /mnt/lsst_stack
+       >> sudo chown /mnt/ps1
+       >> sudo chgrp /mnt/ps1
 
 3. Next, prepare your instance for the installation of the LSST stack:
 
-Update yum packages:
+   Update yum packages:
 
-    >> sudo yum update
+       >> sudo yum update
 
-And install the most recent version of git:
+   And install the most recent version of git:
 
-    >> sudo yum remove git*
-    >> sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-    >> sudo yum -y install git2u-all
+       >> sudo yum remove git*
+       >> sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+       >> sudo yum -y install git2u-all
 
-5. To install the LSST stack, change directory (`cd`) to `/mnt/lsst_stack`, then follow the instructions for "Installing using newinstall.sh" on the LSST installation webpages: [https://pipelines.lsst.io/install/newinstall.html](https://pipelines.lsst.io/install/newinstall.html), including the separate section regarding prerequisites. Note that you don't have to do step 2 (`mkdir lsst_stack`) since you've already done this step when mounting the volume.
+4. To install the LSST stack, change directory (`cd`) to `/mnt/lsst_stack`, then follow the instructions for "Installing using newinstall.sh" on the LSST installation webpages: [https://pipelines.lsst.io/install/newinstall.html](https://pipelines.lsst.io/install/newinstall.html), including the separate section regarding prerequisites. Note that you don't have to do step 2 (`mkdir lsst_stack`) since you've already done this step when mounting the volume.
     
-6. As well as installing the LSST stack, you'll also need to download, unzip and untar the reference catalogue.
+5. As well as installing the LSST stack, you'll also need to download, unzip and untar the reference catalogue.
 
-7. With the LSST stack installed and the reference catalogue unpacked you no longer need this instance. So, to save costs, select the running instance on the instance control panel and click on **Actions > Instance State > Terminate** to kill the instance. The mounted volumes will detach, but will persist. Indeed, you should check that you can see them in the *Volumes* section of the *EC2 Dashboard*.
+6. With the LSST stack installed and the reference catalogue unpacked you no longer need this instance. So, to save costs, select the running instance on the instance control panel and click on **Actions > Instance State > Terminate** to kill the instance. The mounted volumes will detach, but will persist. Indeed, you should check that you can see them in the *Volumes* section of the *EC2 Dashboard*.
 
