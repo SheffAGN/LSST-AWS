@@ -51,7 +51,8 @@ Clearly, you'll want to be able to configure your cluster such that it has, for 
     [ebs ps1]
     shared_dir = /mnt/ps1
     ebs_volume_id = vol-xxxxxxxxxxxxxxxxx
- 
+
+The config file consists of a number of sections, each of which is demarcated with a section name in square brackets: 
 - The `[global]` section contains some general settings and also tells pcluster which cluster config to use (in this case, `default`), I suggest you keep these as they are for now.
 - The `[aws]` section tells pcluster which AWS region to launch the pcluster in. This *must* be the same region where you created the volumes in Part 3 of this tutorial.
 - The `[cluster default]` section contains many of the parameters that define the properties of the cluster. Here, the `default` is that referred to in the `[global]` section.
@@ -66,4 +67,25 @@ Clearly, you'll want to be able to configure your cluster such that it has, for 
   - `key_name` refers to the ssh key that you will use to connect to the master node. Feel free to use the key you generated in Part 3 of this tutorial.
   - `master_root_volume_size` and `compute_root_volume_size` describe the size, in GB, of the HDD volumes connected to each node. This must be large enough to accommodate the ami, but is *not* the volume containing either the LSST stack or the reference catalogue.
   - `ebs_settings` refer to the ebs volume settings specified later in the file; in this case `[ebs lsst_stack]`, `[ebs ps1]`, `[ebs data]`. It is the former two ebs volumes that contain the lsst stack and reference catalogues. These volumes are shared among all the master and compute nodes.
-  
+- The `[vpc public]` section specifies the identity of the Virtual Private Cloud (VPC) and Subnet in which the cluster will be launched. Here `public` refers to the value given in the `vpc_settings` parameter within the `[cluster default]` section:
+  - `vpc_id` is the ID number of the VPC where your cluster will launch and run. When you set up an AWS account, your are by default given a VPC in every AWS region. Here, you must specify the ID of a VPC within the region in which the volumes you created in Part 3 reside. To get this VPC ID, log into your AWS account, making sure you're in the same region as the aforementioned volumes, click on **Services > EC2** and the default VPC ID (`vpc-********`) will be shown in the rightmost panel of your screen.
+  - `subnet-id` is the ID of the subnet where your cluster will launch. Again, this must be in the same availability zone as the volumes created in Part 3. To check which availability zone your volumes are in, log into your AWS account, again making sure you're in the same region as the aforementioned volumes, click on **Services > EC2**, then on the left-hand panel select **Volumes**, and make a record of the value in the *Availability Zone* column in the main panel. Next, click **Services > VPC**, and on the resulting page click **Subnets**, and from the resultint table make a record of the `subnet-id` corresponding to the same *Availability Zone* as your volumes. This is the `subnet-id` you want to use in this parameter.
+- The `[ebs *****]` sections include information about the volumes you would like your cluster to connect to. Here, I have three such sections corresponding to the three volumes I'm going to use: one on which the LSST stack is installed; one containing the reference catalogue; and one including my data.
+  - `shared_dir` specifies where the volume will be mounted. As the parameter suggests, this mount point will be accessible (i.e., shared) between all master and compute nodes (i.e., all nodes will be able to read/write these volumes).
+  - `ebs_volume_id` specifies the ID number of the volume you wish to mount, which you can find by logging into AWS, selecting **Services > EC2**, then clicking on **Volumes** in the left-hand panel. The volume IDs are in the table in the resulting main panel.
+
+Once you have created and saved your config file in `~/.parallelcluster/config`, you are ready to launch your first AWS ParallelCluster. Each AWS Parallel Cluster must be named for identification purposes. In the following, I've simply called it `lsst`. To launch the `lsst` cluster with the above configuration, issue the following command:
+
+    >> pcluster create lsst
+    
+ It'll take a few minutes for the cluster to be created, but once you are returned to the prompt, you can issue the following command to ssh into the master node of your newly-created cluster:
+ 
+    >> pcluster ssh lsst -i /path/to/keyfile.pem
+    
+where the `keyfile.pem` is the ssh key file referred to by the `key_name` parameter.
+
+Once you have logged into your cluster, you can start issuing commands to utilise the cluster nodes. Before doing so, however, it's important that you know how to tear-down a cluster to halt charges. To do this, log out of your cluster (in the usual way by just issuing the `exit` command at the command line of the master node) and issuing the following command on your own machine:
+
+    >> pcluster stop lsst
+    
+Next, we'll look at how to issue LSST stack commands to run across multiple nodes your newly-created AWS cluster.
