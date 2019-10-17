@@ -1,4 +1,4 @@
-## The AWS Command Line Interface (CLI) and pcluster
+## Part 2: The AWS Command Line Interface (CLI) and pcluster
 
 As you witnessed when making a new user, AWS has a pretty nice web interface that allows you to access a wide range of AWS services via point-and-click. However, setting-up and running an AWS HPC Cluster is not currently a services that is supported on the web interface. Instead, it is controlled via the command-line using the **pcluster** command, which you will need to install on your own machine. Thankfully, however, we're all proper scientific researchers here, so we all know-and-love the command line.
 
@@ -18,6 +18,6 @@ Spinning up an AWS HPC Cluster requires lots of different AWS services to run sy
 
 There is dedicated online documentation for pcluster which I again refer you to for installation instructions and as a general reference; see [https://docs.aws.amazon.com/parallelcluster](https://docs.aws.amazon.com/parallelcluster). Please follow the instructions for installing pcluster on your system. Later in the tutorial, we'll go through the steps needed to configure pcluster (so you don't need to do that step just yet).
 
-[Next: Installing the LSST stack for AWS HPC Cluster](./lsstinstall.md)
+[Next: Part 3: Installing the LSST stack for AWS HPC Cluster](./lsstinstall.md)
 
-[Back: Creating an AWS account](./index.md)
+[Back: Part 1: Creating an AWS account](./index.md)
