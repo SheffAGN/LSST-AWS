@@ -4,7 +4,7 @@ Cloud computing services like Amazon Web Services (AWS) and Google Cloud provide
 
 With many aspects of the LSST stack already optimised for multi-processor systems, and having been inspired by a presentation by Hsin-Fang Chiang and Nate Lust at the 2019 LSST Project and Community Workshop, I thought I'd have a go at setting up an AWS cluster and running the LSST stack on it. While eventually successful, the process wasn't entirely straightforward, so I decided to document what I did for future reference and to assist others who also may want to run the LSST stack on an AWS HPC cluster.
 
-### Creating an AWS account
+### Part 1: Creating an AWS account
 
 To set up an AWS HPC cluster you will first need an AWS account with the required priveleges. To create an account, go to [https://portal.aws.amazon.com/billing/signup](https://portal.aws.amazon.com/billing/signup) and follow the instructions. Registration requires a credit card - after all, Jeff Bezos has to put food on the table somehow - and unfortunately some of the steps are outside the free tier (meaning your credit card will be charged). However, provided you ensure you delete any clusters you create, then following this tutorial should cost you way less than 5 US$.
 
@@ -23,4 +23,4 @@ To create a new user, log into AWS as the root user then:
 9. Once the new user has been created, you'll be presented with a *Success* page. Either make a note of the new login credentials (including the *Access key ID* and *Secret access key*), or, more preferably, download the csv file. You can also choose to send an email to yourself, but this doesn't contain the access keys.
 
 
-[Next: Installing AWS CLI and pcluster](./aws-cli.md)
+[Next: Part 2: Installing AWS CLI and pcluster](./aws-cli.md)
