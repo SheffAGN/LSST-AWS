@@ -26,4 +26,10 @@ Next, you'll need to either log out and log back into to the master node, or sou
 
 ### Running an LSST command line driver
 
-With the stack setup, you can now issue command line drivers, which are LSST stack tasks that are specifically written make use of multiple nodes (using MPI).
+With the stack setup, you can now issue command line drivers, which are LSST stack tasks that are specifically written make use of multiple nodes (using MPI). You'll need to include some command-line arguments to make sure that you actually utilise the multiple nodes; for a reference, I recommend the following thread by Paul Price on the LSST community forum: [https://community.lsst.org/t/calib-construction-scripts/731](https://community.lsst.org/t/calib-construction-scripts/731).
+
+A classic example of a driver is `singleFrameDriver.py`, which runs a number of tasks to process a science image. If, for example, your cluster consisted of compute two nodes, each consisting of eight cores, the following `singleFrameDriver.py` command would utilise all your compute cores across both your nodes:
+
+    >> singleFrameDriver.py DATA --rerun outSFD --calib DATA/CALIB --id filter=G --clobber-config --cores 16 --batch-type slurm --mpiexec `-bind-to socket` --time 600
+    
+There are a numbers of tasks you'll have to do before you get to the `singleFrameDriver.py` step, such as data ingestion, and the construction of master calibrations but, as I mentioned earlier, those are for another tutorial. At least now you should have some idea of how to get started using the LSST stack on an AWS multi-node cluster.
