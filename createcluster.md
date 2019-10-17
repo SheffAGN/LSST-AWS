@@ -89,3 +89,7 @@ Once you have logged into your cluster, you can start issuing commands to utilis
     >> pcluster stop lsst
     
 Next, we'll look at how to issue LSST stack commands to run across multiple nodes your newly-created AWS cluster.
+
+[Next: Part 5: Running multi-node LSST tasks on an AWS cluster](./runtasks.md)
+
+[Back: Part 3: Installing the LSST stack for use on an AWS HPC Cluster](./lsstinstall.md)
